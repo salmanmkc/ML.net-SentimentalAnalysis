@@ -22,7 +22,10 @@ namespace myMLApp
 
             // Use the code below to add input data
             var input = new ModelInput();
-            input.SentimentText = "It was really cool";
+            //below should be toxic
+            //input.SentimentText = "It was really cool";
+            // this should be non toxic, below
+            input.SentimentText = "Much more accessible";
 
             // Try model on sample data
             // True is toxic, false is non-toxic
