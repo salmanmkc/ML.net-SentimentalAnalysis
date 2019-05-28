@@ -25,7 +25,9 @@ namespace myMLApp
             //below should be toxic
             //input.SentimentText = "It was really cool";
             // this should be non toxic, below
-            input.SentimentText = "Much happier";
+            input.SentimentText = "Much more accessible";
+            // worked with new model to be non-toxic
+            //input.SentimentText = "Helped other people";
 
             // Try model on sample data
             // True is toxic, false is non-toxic
