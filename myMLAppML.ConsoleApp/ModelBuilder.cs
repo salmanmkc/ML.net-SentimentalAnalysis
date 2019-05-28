@@ -11,6 +11,7 @@ using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using MyMLAppML.Model.DataModels;
+using Microsoft.ML.Trainers;
 
 namespace MyMLAppML.ConsoleApp
 {
@@ -55,7 +56,7 @@ namespace MyMLAppML.ConsoleApp
                                       .AppendCacheCheckpoint(mlContext);
 
             // Set the training algorithm 
-            var trainer = mlContext.BinaryClassification.Trainers.SgdCalibrated(labelColumnName: "Sentiment", featureColumnName: "Features");
+            var trainer = mlContext.BinaryClassification.Trainers.SgdCalibrated(new SgdCalibratedTrainer.Options() { L2Regularization = 5E-06f, ConvergenceTolerance = 0.01f, NumberOfIterations = 10, Shuffle = false, LabelColumnName = "Sentiment", FeatureColumnName = "Features" });
             var trainingPipeline = dataProcessPipeline.Append(trainer);
 
             return trainingPipeline;
