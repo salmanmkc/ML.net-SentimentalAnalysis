@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="1.0.0" />
+    <PackageReference Include="Microsoft.ML.Mkl.Components" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyMLAppML.Model\MyMLAppML.Model.csproj" />
