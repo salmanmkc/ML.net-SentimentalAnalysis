@@ -11,12 +11,13 @@ using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using MyMLAppML.Model.DataModels;
+using Microsoft.ML.Trainers;
 
 namespace MyMLAppML.ConsoleApp
 {
     public static class ModelBuilder
     {
-        private static string TRAIN_DATA_FILEPATH = @"C:\Users\13sch\source\repos\myMLApp\myMLApp\wikipedia-detox-250-line-data.tsv";
+        private static string TRAIN_DATA_FILEPATH = @"C:\Users\13sch\source\repos\ML.net-test\myMLApp\wikipedia-detox-250-line-data.tsv";
         private static string MODEL_FILEPATH = @"../../../../MyMLAppML.Model/MLModel.zip";
 
         // Create MLContext to be shared across the model creation workflow objects 
@@ -55,7 +56,7 @@ namespace MyMLAppML.ConsoleApp
                                       .AppendCacheCheckpoint(mlContext);
 
             // Set the training algorithm 
-            var trainer = mlContext.BinaryClassification.Trainers.SgdCalibrated(labelColumnName: "Sentiment", featureColumnName: "Features");
+            var trainer = mlContext.BinaryClassification.Trainers.SgdCalibrated(new SgdCalibratedTrainer.Options() { L2Regularization = 5E-06f, ConvergenceTolerance = 1E-05f, NumberOfIterations = 10, Shuffle = false, LabelColumnName = "Sentiment", FeatureColumnName = "Features" });
             var trainingPipeline = dataProcessPipeline.Append(trainer);
 
             return trainingPipeline;

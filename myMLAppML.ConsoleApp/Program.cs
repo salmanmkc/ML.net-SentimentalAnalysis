@@ -19,7 +19,7 @@ namespace MyMLAppML.ConsoleApp
         private const string MODEL_FILEPATH = @"MLModel.zip";
 
         //Dataset to use for predictions 
-        private const string DATA_FILEPATH = @"C:\Users\13sch\source\repos\myMLApp\myMLApp\wikipedia-detox-250-line-data.tsv";
+        private const string DATA_FILEPATH = @"C:\Users\13sch\source\repos\ML.net-test\myMLApp\wikipedia-detox-250-line-data.tsv";
 
         static void Main(string[] args)
         {
